@@ -33,4 +33,5 @@ for fname in tqdm(lsr('maildir')):
         ar.add_data(mailparser.parse_from_file(fname).body)
     except:
         print("Error, skipping this")
+        continue
 ar.commit()
