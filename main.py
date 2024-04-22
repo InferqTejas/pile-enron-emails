@@ -29,6 +29,8 @@ if not os.path.exists('maildir'):
 
 ar = lmd.Archive('out')
 for fname in tqdm(lsr('maildir')):
-    ar.add_data(mailparser.parse_from_file(fname).body)
-
+    try:
+        ar.add_data(mailparser.parse_from_file(fname).body)
+    except:
+        print("Error, skipping this")
 ar.commit()
